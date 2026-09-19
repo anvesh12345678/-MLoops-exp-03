@@ -1,0 +1,5 @@
+outs:
+- md5: 72e2694fb5eb38ad1300b74944f0bad7
+  size: 192171
+  hash: md5
+  path: random_forest_kidney_v1.pkl

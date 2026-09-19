@@ -1,0 +1,21 @@
+stages:
+
+  train:
+    cmd: python src/train_dvc.py
+
+    deps:
+      - src/train_dvc.py
+      - data/cleaned_kidney_disease.csv
+
+    params:
+      - random_forest.n_estimators
+      - random_forest.max_depth
+      - random_forest.random_state
+      - test_size
+
+    outs:
+      - models/reproducible_kidney_model.pkl
+
+    metrics:
+      - metrics.json:
+          cache: false

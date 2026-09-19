@@ -1,0 +1,147 @@
+=========================================================
+       MLOPS EXPERIMENT 3 - FINAL EXPERIMENT REPORT
+=========================================================
+
+Project:
+Git and DVC Based Machine Learning Experiment
+
+Dataset:
+Kidney Disease Dataset
+
+Dataset File:
+data/cleaned_kidney_disease.csv
+
+
+---------------------------------------------------------
+1. DATASET VERSIONING
+---------------------------------------------------------
+
+Dataset Version 1:
+Original cleaned kidney disease dataset
+
+Dataset Version 2:
+Modified dataset tracked using DVC
+
+DVC Remote:
+Local DVC Storage
+
+
+---------------------------------------------------------
+2. MODEL VERSIONING
+---------------------------------------------------------
+
+Random Forest V1
+----------------
+Number of Trees : 100
+Maximum Depth   : 5
+Random State    : 42
+Model File      : models/random_forest_kidney_v1.pkl
+
+
+Random Forest V2
+----------------
+Number of Trees : 200
+Maximum Depth   : 10
+Random State    : 42
+Model File      : models/random_forest_kidney_v2.pkl
+
+
+---------------------------------------------------------
+3. MODEL PERFORMANCE
+---------------------------------------------------------
+
+Metric              V1              V2
+---------------------------------------------------------
+Accuracy             1.00000         1.00000
+Precision            1.00000         1.00000
+Recall               1.00000         1.00000
+F1 Score             1.00000         1.00000
+
+(Actual metrics generated from the DVC pipeline,
+ saved in reports/metrics_v1.json and
+ reports/metrics_v2.json)
+
+
+---------------------------------------------------------
+4. DVC PIPELINE
+---------------------------------------------------------
+
+Pipeline:
+Dataset
+   |
+   v
+Preprocessing
+   |
+   v
+Random Forest Training
+   |
+   v
+Model
+   |
+   v
+Metrics
+
+
+Parameters are stored in:
+params.yaml
+
+Pipeline definition:
+dvc.yaml
+
+Evaluation metrics:
+metrics.json
+
+
+---------------------------------------------------------
+5. REPRODUCIBILITY
+---------------------------------------------------------
+
+Command:
+dvc repro
+
+The experiment was reproduced using the versioned
+dataset, source code and hyperparameters.
+
+The resulting model and evaluation metrics were
+generated again from the DVC pipeline.
+
+dvc status: "Data and pipelines are up to date."
+
+
+---------------------------------------------------------
+6. VERSION CONTROL
+---------------------------------------------------------
+
+Git:
+- Source code versioning
+- Parameter versioning
+- Commit history
+- Collaboration
+
+DVC:
+- Dataset versioning
+- Model versioning
+- Experiment metrics
+- Reproducibility
+- Remote data storage
+
+
+---------------------------------------------------------
+7. CONCLUSION
+---------------------------------------------------------
+
+Git and DVC together provide a reproducible machine
+learning workflow.
+
+Git manages source code, configuration and experiment
+history, while DVC manages large datasets and model
+artifacts.
+
+The use of params.yaml and dvc.yaml allows the complete
+ML experiment to be reproduced using dvc repro.
+
+The hyperparameters for Random Forest V1 (100 trees,
+depth 5) and V2 (200 trees, depth 10) are versioned in
+params.yaml. Both versions achieve perfect metrics on
+this dataset (accuracy = precision = recall = F1 = 1.0),
+verified via dvc metrics show and dvc metrics diff.

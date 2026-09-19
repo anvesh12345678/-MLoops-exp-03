@@ -1,0 +1,28 @@
+schema: '2.0'
+stages:
+  train:
+    cmd: python src/train_dvc.py
+    deps:
+    - path: data/cleaned_kidney_disease.csv
+      hash: md5
+      md5: 361f32510709afcd4f06467d5b259d37
+      size: 51027
+    - path: src/train_dvc.py
+      hash: md5
+      md5: e2648b35987845faf6c1f52c35deb683
+      size: 4931
+    params:
+      params.yaml:
+        random_forest.max_depth: 10
+        random_forest.n_estimators: 200
+        random_forest.random_state: 42
+        test_size: 0.2
+    outs:
+    - path: metrics.json
+      hash: md5
+      md5: aed4c6216573de4906939205915c8bca
+      size: 90
+    - path: models/reproducible_kidney_model.pkl
+      hash: md5
+      md5: ea793418495aea0ff2c3ab7aea0b55a2
+      size: 654571
